@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
+    "@cypress/browserify-preprocessor": "latest",
+    "cypress": "^13.16.1",
+    "jasmine": "^5.5.0"
+  },
+  "name": "firstproject",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "cypress-iframe": "^1.0.1",
+    "cypress-mochawesome-reporter": "^3.8.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "runTests": "cypress run --spec cypress/integration/examples/*.js --browser chrome --headed",
+    "runHeadless": "cypress run --spec cypress/integration/examples/*.js --browser chrome --headless",
+    "smokeTest": "cypress run --spec cypress/integration/smokeTest/*.js --browser chrome --headed"
+  },
+  "author": "Norvin Martinez",
+  "license": "ISC",
+  "description": ""
+}

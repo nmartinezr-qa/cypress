@@ -1,0 +1,9 @@
+{
+  "productName1": "Samsung",
+  "productName2": "iphone",
+  "shopName": "Shop Name",
+  "quantityOfPhones": 4,
+  "maxTotalPrice": 200000,
+  "country": "India",
+  "successMessage": "Success!"
+}
