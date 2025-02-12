@@ -4,10 +4,10 @@ name: Cypress Tests
 on:
   push:
     branches:
-      - main  # Cambia 'main' por la rama que desees monitorear
+      - master  # Cambia 'main' por la rama que desees monitorear
   pull_request:
     branches:
-      - main
+      - master
 
 # Define los jobs (tareas) que se ejecutarán
 jobs:
