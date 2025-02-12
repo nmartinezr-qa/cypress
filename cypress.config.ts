@@ -1,3 +1,5 @@
+import { json } from "stream/consumers";
+
 const { defineConfig } = require("cypress");
 const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
 const path = require("path");
@@ -35,7 +37,8 @@ module.exports = defineConfig({
     charts: true, // Incluir gráficos en el reporte
     reportPageTitle: 'Resultados de Pruebas Cypress',
     embeddedScreenshots: true, // Incrustar capturas de pantalla en el reporte
-    inlineAssets: true // Incrustar archivos CSS y JS directamente en el reporte
+    inlineAssets: true, // Incrustar archivos CSS y JS directamente en el reporte,
+    json: true // Generar un archivo JSON con los resultados
   },
   retries: {
     runMode: 1,
