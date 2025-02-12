@@ -25,14 +25,6 @@ jobs:
         with:
           node-version: 18  # Cambia la versión según tu proyecto
 
-      # Paso 3: Asegúrate de que los scripts de Cypress sean ejecutables (permisos)
-      - name: Fix permissions
-        run: chmod -R +x ./node_modules/.bin
-
-      # Paso 3: Asegúrate de que haya permiso para guardar cache de Cypress
-      - name: Fix permissions in Cypress cache
-        run: sudo chmod -R +x ~/.cache/Cypress
-
       # Paso 4: Cachea las dependencias y el binario de Cypress
       - name: Cache dependencies and Cypress binary
         uses: actions/cache@v4
@@ -46,7 +38,7 @@ jobs:
 
       # Paso 5: Instala dependencias
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       
       # Paso 6: Instala el binario de Cypress si no está presente
       - name: Install Cypress binary if missing
@@ -55,6 +47,14 @@ jobs:
       # Paso 7: Verifica la instalación de Cypress
       - name: Verify Cypress installation
         run: npx cypress verify
+
+        # Paso 3: Asegúrate de que los scripts de Cypress sean ejecutables (permisos)
+      - name: Fix permissions
+        run: chmod -R +x ./node_modules/.bin
+
+      # Paso 3: Asegúrate de que haya permiso para guardar cache de Cypress
+      - name: Fix permissions in Cypress cache
+        run: sudo chmod -R +x ~/.cache/Cypress
 
       # Paso 8: Ejecuta las pruebas de Cypress
       - name: Run Cypress tests
