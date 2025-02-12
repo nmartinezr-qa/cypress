@@ -9,8 +9,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^6.0.2",
+    "@types/node": "^22.13.1",
     "cypress-iframe": "^1.0.1",
-    "cypress-mochawesome-reporter": "^3.8.2"
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
