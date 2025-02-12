@@ -29,11 +29,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Paso 4: Ejecuta las pruebas de Cypress
+      # Paso 4: Asegúrate de que los scripts de Cypress sean ejecutables (permisos)
+      - name: Fix permissions
+        run: chmod -R +x ./node_modules/.bin
+
+      # Paso 5: Ejecuta las pruebas de Cypress
       - name: Run Cypress tests
         run: npx cypress run --headless --browser chrome
 
-      # Paso 5: Sube los reportes como artefactos (opcional)
+      # Paso 6: Sube los reportes como artefactos (opcional)
       - name: Upload reports
         uses: actions/upload-artifact@v4
         with:
