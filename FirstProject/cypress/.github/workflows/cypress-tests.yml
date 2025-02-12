@@ -1,0 +1,41 @@
+name: Cypress Tests
+
+# Define cuándo se ejecutará el workflow
+on:
+  push:
+    branches:
+      - main  # Cambia 'main' por la rama que desees monitorear
+  pull_request:
+    branches:
+      - main
+
+# Define los jobs (tareas) que se ejecutarán
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest  # Usa una máquina virtual con Ubuntu
+
+    steps:
+      # Paso 1: Clona el repositorio
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Paso 2: Configura Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  # Cambia la versión según tu proyecto
+
+      # Paso 3: Instala dependencias
+      - name: Install dependencies
+        run: npm install
+
+      # Paso 4: Ejecuta las pruebas de Cypress
+      - name: Run Cypress tests
+        run: npx cypress run --headless --browser chrome
+
+      # Paso 5: Sube los reportes como artefactos (opcional)
+      - name: Upload reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-reports
+          path: cypress/reports
