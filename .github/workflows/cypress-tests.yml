@@ -25,19 +25,30 @@ jobs:
         with:
           node-version: 18  # Cambia la versión según tu proyecto
 
-      # Paso 3: Instala dependencias
+      # Paso 3: Cachea las dependencias y el binario de Cypress
+      - name: Cache dependencies and Cypress binary
+        uses: actions/cache@v4
+        with:
+            path: |
+              node_modules
+              ~/.cache/Cypress
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-node-
+
+      # Paso 4: Instala dependencias
       - name: Install dependencies
         run: npm install
 
-      # Paso 4: Asegúrate de que los scripts de Cypress sean ejecutables (permisos)
+      # Paso 5: Asegúrate de que los scripts de Cypress sean ejecutables (permisos)
       - name: Fix permissions
         run: chmod -R +x ./node_modules/.bin
 
-      # Paso 5: Ejecuta las pruebas de Cypress
+      # Paso 6: Ejecuta las pruebas de Cypress
       - name: Run Cypress tests
         run: npx cypress run --headless --browser chrome
 
-      # Paso 6: Sube los reportes como artefactos (opcional)
+      # Paso 7: Sube los reportes como artefactos (opcional)
       - name: Upload reports
         uses: actions/upload-artifact@v4
         with:
