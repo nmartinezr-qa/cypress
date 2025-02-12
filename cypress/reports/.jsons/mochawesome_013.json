@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-02-12T19:11:39.179Z",
+    "end": "2025-02-12T19:11:53.959Z",
+    "duration": 14780,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ba72ce83-e103-4052-a0dc-17da6c29aa06",
+      "title": "",
+      "fullFile": "cypress\\integration\\smokeTest\\smoke1.js",
+      "file": "cypress\\integration\\smokeTest\\smoke1.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "589f36dd-7155-43ef-8dbb-6838ab418a9c",
+          "title": "End to end testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Submit Order",
+              "fullTitle": "End to end testing Submit Order",
+              "timedOut": null,
+              "duration": 12569,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "Cypress.config('defaultCommandTimeout', 10000)\nconst homePage = new _support_pageObjects_HomePage__WEBPACK_IMPORTED_MODULE_0__[\"default\"]()\nhomePage.goTo(Cypress.env('url'))\nhomePage.login(Cypress.env('username'), Cypress.env('password'))\nconst productPage = new _support_pageObjects_ProductPage__WEBPACK_IMPORTED_MODULE_1__[\"default\"]()\nproductPage.getShopName().should('be.visible').and('contain', this.data.shopName)\nproductPage.getQuantityOfPhones().should('have.length', this.data.quantityOfPhones)\nproductPage.selectProductByName(this.data.productName1)\nproductPage.selectProductByName(this.data.productName2)\nproductPage.checkout()\nconst cartPage = new _support_pageObjects_CartPage__WEBPACK_IMPORTED_MODULE_2__[\"default\"]()\ncartPage.getProductsInCart().filter(`:contains(\"${this.data.productName1}\")`).should('be.visible')\ncartPage.getProductsInCart().filter(`:contains(\"${this.data.productName1}\")`).should('be.visible')\ncartPage.verifyMaxTotalPrice(this.data.maxTotalPrice)\ncartPage.checkout()\nconst confirmationPage = new _support_pageObjects_ConfirmationPage__WEBPACK_IMPORTED_MODULE_3__[\"default\"]()\nconfirmationPage.submitOrder(this.data.country)\nconfirmationPage.verifySuccessMessage(this.data.successMessage)",
+              "err": {},
+              "uuid": "319ed85c-9239-4b64-9046-45c0b8fc4d89",
+              "parentUUID": "589f36dd-7155-43ef-8dbb-6838ab418a9c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "319ed85c-9239-4b64-9046-45c0b8fc4d89"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12569,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "Resultados de Pruebas Cypress",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
