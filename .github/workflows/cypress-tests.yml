@@ -40,6 +40,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Cypress binary if missing
+        run: npx cypress install
+
       # Paso 5: Asegúrate de que los scripts de Cypress sean ejecutables (permisos)
       - name: Fix permissions
         run: chmod -R +x ./node_modules/.bin
