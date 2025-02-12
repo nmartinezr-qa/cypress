@@ -58,8 +58,9 @@ jobs:
 
       # Paso 9: Ejecuta las pruebas de Cypress
       - name: Run Cypress tests
-        run: npx cypress run --spec cypress/integration/smokeTest/*.js --headless
-
+        #run: npx cypress run --spec cypress/integration/smokeTest/*.js --headless
+        run: npx cypress run --spec cypress/integration/examples/Test1.js --headless
+        
       # Paso 10: Sube los reportes como artefactos (opcional)
       - name: Upload reports
         uses: actions/upload-artifact@v4
