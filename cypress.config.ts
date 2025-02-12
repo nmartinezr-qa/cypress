@@ -1,45 +1,29 @@
 const { defineConfig } = require("cypress");
-
+const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
+const path = require("path");
+const webpack = require("@cypress/webpack-preprocessor");
 const browserify = require("@cypress/browserify-preprocessor");
-const {
-  addCucumberPreprocessorPlugin,
-} = require("@badeball/cypress-cucumber-preprocessor");
-const {
-  preprendTransformerToOptions,
-} = require("@badeball/cypress-cucumber-preprocessor/browserify");
 
 async function setupNodeEvents(on, config) {
   require('cypress-mochawesome-reporter/plugin')(on);
 
-  // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
+  // Configuración para Cucumber
   await addCucumberPreprocessorPlugin(on, config);
+  
+  require('ts-node/register');
 
-  const webpack = require('@cypress/webpack-preprocessor');
+  // Configuración de Webpack
+  const webpackOptions = {
+    webpackOptions: require(path.resolve(__dirname, './webpack.config.js')), // Usa un archivo JS para la configuración de Webpack
+    watchOptions: {},
+  };
 
-      const options = {
-        webpackOptions: {
-          resolve: {
-            extensions: [".ts", ".js"]
-          },
-          module: {
-            rules: [
-              {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                use: "ts-loader"
-              }
-            ]
-          }
-        }
-      };
+  on(
+    "file:preprocessor",
+    webpack(webpackOptions),  // Usa solo Webpack como preprocesador
+    browserify(browserify.defaultOptions)  // O usa Browserify si lo prefieres en lugar de Webpack
+  );
 
-      on(
-        "file:preprocessor",
-        webpack(options),
-        browserify(preprendTransformerToOptions(config, browserify.defaultOptions)),
-      );
-
-  // Make sure to return the config object as it might have been modified by the plugin.
   return config;
 }
 
@@ -59,7 +43,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents,
     specPattern: "cypress/integration/*/*.{js,ts}",
-    //specPattern: "cypress/integration/examples/BDD/*.feature",
+    //specPattern: "cypress/integration/**/*.feature", // Utiliza archivos .feature para Cucumber
     defaultCommandTimeout: 5000,
     env: {
       url: "https://rahulshettyacademy.com/loginpagePractise/",

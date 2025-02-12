@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
-import HomePage from "../../support/pageObjects/HomePage";
-import ProductPage from "../../support/pageObjects/ProductPage";
-import CartPage from "../../support/pageObjects/CartPage";
-import ConfirmationPage from "../../support/pageObjects/ConfirmationPage";
+import HomePage from "@PageObjects/HomePage";
+import ProductPage from "@PageObjects/ProductPage";
+import CartPage from "@PageObjects/CartPage";
+import ConfirmationPage from "@PageObjects/ConfirmationPage";
 
     describe("End to end testing",()=>{
 

@@ -1,10 +1,11 @@
 {
-    "compilerOptions": {
-      "target": "ES6",
-      "module": "CommonJS",
-      "lib": ["ES6", "DOM"],
-      "types": ["cypress"],
-      "strict": true
-    },
-    "include": ["cypress/**/*.ts"]
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["cypress/**/*.ts"]
 }
