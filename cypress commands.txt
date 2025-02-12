@@ -1,0 +1,26 @@
+// Para iniciar un proyecto y crear la estructura (default)
+npm init -y
+
+// Instalar cypress
+npm install cypress --save-dev
+
+//Para Ejecutar el E2E local
+npx cypress open
+
+// Para ejecutar un Test desde terminal en el browser
+npx cypress run --headed --browser chrome --spec {path_to_spec_file}
+
+// Para Correr Headless
+npx cypress run --browser chrome --headless
+
+// Para Correr los TCs desde Cloud
+npx cypress run --record --key 163f5ed0-803d-45a4-a24f-2d59e3453bf1
+
+
+// Para ejecutar scripts definidos en package.json
+npm run {scriptName}
+ie: npm run runTests
+
+
+// Para ejecutar los TCs en cucumber que tengan un Tag especifico @smoke o @regression
+npx cypress run --env tags="@Smoke" --headed
